@@ -29,6 +29,7 @@ body {
 }
 .tweet {
   margin: 1.4em 0;
+  word-wrap: break-word;
 }
 .new-tweet {
   opacity: 0.0;
