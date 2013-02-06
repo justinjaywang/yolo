@@ -6,16 +6,20 @@ function refreshFeed() {
     url: server+query,
     dataType:'jsonp',
     success: function(data){
-      query = data.refresh_url;
-      $.each(data.results, function(index, item){
-        $('.container').prepend('<p class="tweet new-tweet">' + item.text + '</p>');
-        $('.new-tweet').fadeTo(600, 1.0, function() {
-          $(this).removeClass('new-tweet');
+      // make sure response is received
+      if (typeof data.refresh_url !== 'undefined' && typeof data.results !== 'undefined') {
+        query = data.refresh_url;
+        $.each(data.results, function(index, item){
+          $('.container').prepend('<p class="tweet new-tweet">' + item.text + '</p>');
+          $('.new-tweet').fadeTo(600, 1.0, function() {
+            $(this).removeClass('new-tweet');
+          });
         });
-      });
+      }
       setTimeout(function(){refreshFeed(); return false}, 2000);
     },
-    error:function(XMLHttpRequest, textStatus, errorThrown) {
+    error:function(jqXHR, textStatus, errorThrown) {
+      console.log(errorThrown);
       refreshFeed();
     }
   })
