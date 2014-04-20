@@ -1,4 +1,5 @@
-var server = 'http://search.twitter.com/search.json';
+// var server = 'http://search.twitter.com/search.json';
+var server = 'https://api.twitter.com/1.1/search/tweets.json';
 var query = '?q=-RT%20%23yolo%20lang%3Aen&rpp=1';
 
 function refreshFeed() {
